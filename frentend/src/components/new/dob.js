@@ -38,7 +38,7 @@ export default function Dob({setDob,id,Change}) {
 
     
     
-    setDob(selectedYear+"-"+selectedMonth+"-"+selectedDay);
+    setDob(selectedDay+'-'+selectedMonth+'-'+selectedYear);
 
     return (
         <>

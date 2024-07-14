@@ -1,11 +1,8 @@
-
-
-
-
 import "./css/newlogin.css";
+import userApi from "../../api/";
 
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -21,8 +18,11 @@ export default function Authenticate() {
 
     const [currentStep, setCurrentStep] = useState("enterEmail");
     const [email, setEmail] = useState('');
-    const [id, setId] = useState('');
-    const handleEmailNext = async () => {
+    const [userId, setUserId] = useState('');
+
+
+    const handleEmailNext = async (e) => {
+        e.preventDefault();
 
         if (email === "") {
             alert("Please provide a valid email address")
@@ -33,13 +33,13 @@ export default function Authenticate() {
         }
         else {
             try {
-                const responce = await axios.post(`/api/user/checkemail`, {
+                const responce = await userApi.post(`/finduser`, {
                     email: email
                 })
-                console.log(responce)
+                // console.log(responce)
                 alert(responce.data.message)
-                if (responce.data.user) {
-                    setId(responce.data.user)
+                if (responce.data.userId) {
+                    setUserId(responce.data.userId)
                     setCurrentStep("login")
                 }
                 else {
@@ -69,7 +69,7 @@ return (
                 </div>
                 {/* <EnterEmail setEmail={setEmail}></EnterEmail> */}
                 {currentStep === "enterEmail" && <EnterEmail setEmail={setEmail} onNext={handleEmailNext} />}
-                {currentStep === "login" && <Login id={id} />}
+                {currentStep === "login" && <Login userId={userId} />}
                 {currentStep === "signup" && <Signup email={email} />}
 
 

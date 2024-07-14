@@ -1,29 +1,27 @@
 
 
 import "./css/chat.css";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import SetProfile from "./new/setProfile";
+// import SetProfile from "./new/setProfile";
 // import axios from 'axios';
 
 function Inbox() {
     const navigate = useNavigate();
 
     const logOut = () => {
-        localStorage.removeItem("user");
+        localStorage.removeItem("userId");
         navigate("/logout");
-        setTimeout(() => {
-            alert("User logged out");
-        }, 1000);
+        alert("User logged out");
     }
 
     useEffect(() => {
-        if (!localStorage.getItem("user")) {
+        if (!localStorage.getItem("userId")) {
             navigate("/");
         }
-    }, );
+    },);
 
-    const [fileUploader,setFileUploade] = useState(false)
+    // const [fileUploader, setFileUploade] = useState(false)
     return (
         <div className="user-container">
             <div className="search">

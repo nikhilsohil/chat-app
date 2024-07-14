@@ -2,6 +2,7 @@
 // 
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import userApi from "../../api/";
 import "./css/newlogin.css"
 import Dob from "./dob";
 import Button from "./button";
@@ -12,7 +13,6 @@ import Radio from "./input-radio";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import axios from 'axios';
 
 
 
@@ -218,7 +218,7 @@ export default function Signup({ email }) {
         if (validateForm()) {
             try {
 
-                const response = await axios.post(`/api/user/register`, {
+                const response = await userApi.post(`/signup`, {
                     email: email,
                     firstname: fname,
                     lastname: lname,
@@ -228,11 +228,13 @@ export default function Signup({ email }) {
                 })
                 console.log(response);
                 alert(response.data.message);
-                if (response.status === 208) {
-                    navigate("/authenticate");
+                if (response.data.userId) {
+                    localStorage.setItem("userId", response.data.user);
+                    navigate("/chatbox");
+                    alert("hiiii")
                 }
-                else if (response.status === 200) {
-                    navigate("/inbox");
+                else{
+                    navigate("/authenticate");
                 }
             } catch (error) {
 

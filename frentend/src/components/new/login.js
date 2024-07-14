@@ -2,7 +2,8 @@
 
 import { React, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import userApi from "../../api/";
+
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,12 +13,12 @@ import Input from './input';
 import Button from './button';
 
 
-export default function Login({ id }) {
+export default function Login({ userId }) {
     const [icon, setIcon] = useState(true);
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const passwordRef=useRef(null);
-    const errorRef=useRef(null);
+    const passwordRef = useRef(null);
+    const errorRef = useRef(null);
 
     const checkPassword = async () => {
 
@@ -29,21 +30,21 @@ export default function Login({ id }) {
         else {
 
             try {
-                const response = await axios.post(`/api/user/login`, {
-                    id: id,
+                const response = await userApi.post(`/login`, {
+                    userId: userId,
                     password: password
                 });
+                // console.log(response.data);
                 alert(response.data.message)
-                if (response.status === 200) {
-                    console.log(response.data);
-                    localStorage.setItem("user", response.data.user);
+                if (response.data.userId) {
+                    localStorage.setItem("userId", response.data.userId);
                     navigate("/chatbox")
                 }
                 else {
                     console.log(password);
                     passwordRef.current.style.border = "2px solid red";
                     errorRef.current.style.display = "block";
-                    errorRef.current.innerText = "password is Incorrect";
+                    errorRef.current.innerText = response.data.message;
                     // alert("please enter the correct password")
                 }
             }
@@ -73,7 +74,7 @@ export default function Login({ id }) {
                                 setPassword(e.target.value);
                             }}
                             id={"password"}
-                            ref={{inputRef:passwordRef,errorRef}}>
+                            ref={{ inputRef: passwordRef, errorRef }}>
 
                             <button type="button" onClick={() => { setIcon(!icon) }} className="icon">
                                 {icon ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}

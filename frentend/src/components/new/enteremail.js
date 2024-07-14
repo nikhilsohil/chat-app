@@ -23,7 +23,6 @@ export default function EnterEmail({ setEmail, onNext }) {
         // inputRef.current.style.border = "2px solid black";
         // errorRef.style.display = "none";
         // iconRef.style.color = "black";
-        setTimeout(() => {
 
             let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             let result = pattern.test(e.target.value);
@@ -44,8 +43,7 @@ export default function EnterEmail({ setEmail, onNext }) {
                 errorRef.current.innerHTML = "";
                 setEmail(e.target.value)
                 setIcon(true);
-            }
-        }, 1000);
+            };
 
     };
 
@@ -57,7 +55,7 @@ export default function EnterEmail({ setEmail, onNext }) {
                 <h2>Enter your email address</h2>
                 <span >Enter your email address to log in to your account or create a new one.
                 </span>
-                <form className="input-form">
+                <form className="input-form" onSubmit={onNext}>
                     <div className="input-field">
                         <Input type="text" label="Email" onChange={validate} id={"input-email"} ref={{ inputRef, errorRef }}>
                             <div className="icon" ref={iconRef}>
