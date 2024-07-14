@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    box-sizing: border-box;
+    font-family: 'Segoe UI Historic', 'Segoe UI', Helvetica, Arial, sans-serif;
+    /* text-transform: capitalize; */
+}
+/* *:first-letter {
+    text-transform: uppercase;
+} */
+label{
+    display: block;
+    width: 100%;
+}
+.ncontainer{
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background-color: #ecf5fe;
+    background-image:linear-gradient(135deg ,#fcf3f8 , #ecf5fe);
+
+    display: flex;
+    justify-content: center;
+}
+
+.nwapper{
+    display: grid;
+    grid-template-rows: 10% auto auto;
+    width: 90%;
+    max-width: 640px;
+    /* height: max-content; */
+    margin: 2rem;
+    padding: 1.5rem;
+    /* background-image:linear-gradient(135deg ,#fcf3f8 , #ecf5fe); */
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* .subgrid{
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: 1/4;
+
+} */
+
+.nwapper h2{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+
+}
+.input-form{
+    margin:10px 0;
+}
+.input-form p{
+    margin-bottom: 10px;
+}
+
+.input-field{
+    /* margin:20px 0; */
+    margin-bottom: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.input-area{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 5px;
+}
+
+.input-container{
+    display: flex;
+    border: 2px solid black;
+    border-radius: 10px;
+    height:3rem;
+    width: 100%;
+    padding: .6rem;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0px 5px; */
+    /* margin-top:10px ; */
+    /* margin-bottom: 10px; */
+
+}
+.input-box{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height:100%;
+    width:calc(100%);
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.input-text,select{
+    /* padding: 10px; */
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background-color: white;
+    border: none;
+    outline: none;
+}
+select{
+    border: none;
+    width: 100%;
+}
+.input-label{
+    position:absolute;
+    display: inline;
+    left: 0;
+    /* width: 100%; */
+    /* padding: 10px; */
+    color: #b2b3b3;
+    transition: 0.3s;
+    text-transform: capitalize;
+    pointer-events: none;
+
+}
+.input-text:valid + .input-label,
+.input-text:focus + .input-label{
+    background-color:transparent;
+    padding-top:0px;
+    transition: 0.3s;
+    font-size: 0.8rem;
+    color: #6c6b6b;
+    /* transform: (0.75) translateY(-39px); */
+    transform:translateY(-20px) ;
+    z-index:111;    
+    margin-top: 10px;
+}
+.input-text:valid,
+.input-text:focus{
+    background-color: white !important;
+    /* padding-top: 20px; */
+}
+.label-gender{
+    float: left;
+    /* align-self: ; */
+
+}
+.icon{
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    /* font-size: 20px; */
+    float:right;
+    background: none;
+	color: inherit;
+	border: none;
+	cursor: pointer;
+	outline: inherit;
+    pointer-events:all;
+    /* align-self: flex-end; */
+}
+.input-error{
+    color: red;
+    /* margin: 10px 10px; */
+    
+    display: none;
+    padding: 0 10px;
+    font-size: 1rem; 
+}
+.input-form{
+    position: relative;
+}
+.button-field{
+    width: 100%;
+    align-self: end;
+    margin: .6rem .3rem;
+    margin-top: 1.2rem;
+}
+.button-field button{
+    cursor: pointer;
+    margin-top: auto;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color:#1079fb ; 
+    color: white;  
+}
+
+.button-field button:hover{
+    background-color:#106bff ;
+}
+
+.forget button{
+    background-color:inherit ;
+    color: black; 
+}
+
+.forget button:hover{
+    background-color:#ecebeb ;
+}
+
+.icon1{
+    font-size: 5rem;
+    /* height: 2rem;/ */
+    /* width: 2rem ; */
+}
+
+.file_selector{
+    max-width: 100% !important;
+    height: 10rem !important;
+}
